@@ -10,6 +10,10 @@
 }
 
 * { box-sizing: border-box; }
+/* Grid/flex children must shrink to the viewport, not their longest word. */
+main, section, .hero-copy, .section-heading > *, .process > *,
+.principles > *, .step > *, .principle > *, .footer > * { min-width: 0; }
+h2, h3, p, .footer-meta { overflow-wrap: anywhere; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -175,7 +179,13 @@ h2 { margin: 0; font-size: clamp(2.25rem, 4.5vw, 5.2rem); }
   .nav.open { transform: translateY(0); }
   .nav-contact { margin-top: 15px; font-family: "Manrope", sans-serif; font-size: .95rem; }
   .hero { min-height: auto; padding-top: 115px; gap: 36px; }
-  .hero-title { font-size: clamp(3rem, 15vw, 5.2rem); }
+  .hero-title { font-size: clamp(1.5rem, 8.4vw, 3.78rem); }
+  h2 { font-size: clamp(1.65rem, 7vw, 3rem); line-height: 1.12; }
+  .principle-quote h2 { font-size: clamp(1.65rem, 7vw, 3rem); }
+  .eyebrow { letter-spacing: .12em; }
+  .eyebrow::before { flex-shrink: 0; }
+  .nav { visibility: hidden; pointer-events: none; }
+  .nav.open { visibility: visible; pointer-events: auto; }
   .hero-text { margin-top: 22px; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 20px; }
   .hero-visual { width: 100%; height: 480px; min-height: 0; border-radius: 120px 120px 12px 12px; }
@@ -190,16 +200,22 @@ h2 { margin: 0; font-size: clamp(2.25rem, 4.5vw, 5.2rem); }
   .principles { gap: 55px; }
   .principle { grid-template-columns: 42px 1fr; }
   .contact { min-height: 620px; padding-left: 18px; padding-right: 18px; }
+  .contact h2 { font-size: clamp(1.65rem, 7.6vw, 3.4rem); line-height: 1.12; max-width: 100%; }
+  .contact h2 br { display: none; }
+  .contact-text { max-width: 100%; }
+  .step h3, .service-card h3, .principle h3 { font-size: clamp(.95rem, 4.2vw, 1.25rem); }
+  .faq-item button span { min-width: 0; overflow-wrap: anywhere; }
   .contact-actions { width: 100%; flex-direction: column; }
   .contact-actions .button { width: 100%; }
   .contact-orbit { width: 125vw; }
   .footer { grid-template-columns: 1fr; padding: 48px 20px; }
   .footer p { order: initial; grid-column: auto; }
-  .footer-meta { justify-content: space-between; }
+  .footer-meta { justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-meta > span { flex: 1 1 200px; }
+  .footer-meta > a { flex-shrink: 0; }
 }
 
 @media (max-width: 390px) {
-  .hero-title { font-size: 2.72rem; }
   .button { padding: 0 20px; }
   .floating-card { transform: scale(.9); }
   .card-top { left: -2px; }
