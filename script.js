@@ -6,7 +6,6 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 window.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => body.classList.add('loaded'));
-  document.querySelector('#year').textContent = new Date().getFullYear();
 });
 
 window.addEventListener('scroll', () => {
@@ -17,7 +16,7 @@ menuButton.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('open');
   menuButton.classList.toggle('active', isOpen);
   menuButton.setAttribute('aria-expanded', String(isOpen));
-  menuButton.setAttribute('aria-label', isOpen ? 'Ð—Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ Ð¼ÐµÐ½ÑŽ' : 'ÐžÑ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ð¼ÐµÐ½ÑŽ');
+  menuButton.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
   body.style.overflow = isOpen ? 'hidden' : '';
 });
 
@@ -25,6 +24,7 @@ nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () =>
   nav.classList.remove('open');
   menuButton.classList.remove('active');
   menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Открыть меню');
   body.style.overflow = '';
 }));
 
